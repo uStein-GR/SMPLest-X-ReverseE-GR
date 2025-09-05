@@ -5,27 +5,6 @@ This work is the extended version of [SMPLer-X](https://arxiv.org/abs/2309.17448
 ![Teaser](./assets/teaser.png)
 
 
-## Useful links
-
-<div align="center">
-    <a href="https://arxiv.org/abs/2501.09782" class="button"><b>[arXiv]</b></a> &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="https://caizhongang.github.io/projects/SMPLer-X/" class="button"><b>[Homepage]</b></a> &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="https://youtu.be/DepTqbPpVzY" class="button"><b>[Video]</b></a> &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="https://github.com/caizhongang/SMPLer-X" class="button"><b>[SMPLer-X]</b></a> &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="https://github.com/open-mmlab/mmhuman3d" class="button"><b>[MMHuman3D]</b></a> &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="https://github.com/wqyin/WHAC/tree/main" class="button"><b>[WHAC]</b></a></a>
-    
-</div>
-
-
-## News
-
-- [2025-02-17] Pretrained model available for download.
-- [2025-02-14] 💌💌💌 Brand new codebase released for training, testing and inference.
-- [2025-01-20] Paper released on [arXiv](https://arxiv.org/abs/2501.09782).
-- [2025-01-08] Project page created.
-
-
 ## Install
 ```bash
 bash scripts/install.sh
@@ -126,15 +105,3 @@ sh scripts/test.sh SynHand smplest_x_h 5
   year={2025}
 }
 ```
-
-## Explore More [SMPLCap](https://github.com/SMPLCap) Projects
-
-- [arXiv'25] [SMPLest-X](https://github.com/SMPLCap/SMPLest-X): An extended version of [SMPLer-X](https://github.com/SMPLCap/SMPLer-X) with stronger foundation models.
-- [ECCV'24] [WHAC](https://github.com/SMPLCap/WHAC): World-grounded human pose and camera estimation from monocular videos.
-- [CVPR'24] [AiOS](https://github.com/SMPLCap/AiOS): An all-in-one-stage pipeline combining detection and 3D human reconstruction. 
-- [NeurIPS'23] [SMPLer-X](https://github.com/SMPLCap/SMPLer-X): Scaling up EHPS towards a family of generalist foundation models.
-- [NeurIPS'23] [RoboSMPLX](https://github.com/SMPLCap/RoboSMPLX): A framework to enhance the robustness of
-whole-body pose and shape estimation.
-- [ICCV'23] [Zolly](https://github.com/SMPLCap/Zolly): 3D human mesh reconstruction from perspective-distorted images.
-- [arXiv'23] [PointHPS](https://github.com/SMPLCap/PointHPS): 3D HPS from point clouds captured in real-world settings.
-- [NeurIPS'22] [HMR-Benchmarks](https://github.com/SMPLCap/hmr-benchmarks): A comprehensive benchmark of HPS datasets, backbones, and training strategies.
