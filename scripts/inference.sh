@@ -29,7 +29,7 @@ esac
 END_COUNT=$(find "$IMG_PATH" -type f | wc -l)
 
 # inference with smplest_x
-PYTHONPATH=../:$PYTHONPATH \
+# PYTHONPATH=../:$PYTHONPATH \  
 python main/inference.py \
     --num_gpus 1 \
     --file_name $NAME \
