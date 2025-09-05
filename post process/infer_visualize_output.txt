@@ -1,0 +1,152 @@
+PS D:\KMUTT-Master's Degree\Research\Text2Sign\Code\SMPLest-X Main> sh scripts/inference.sh smplest_x_h dgs_345_front.mp4 30
+ffmpeg version 7.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2025 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from './demo/dgs_345_front.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.3.100
+  Duration: 00:00:02.46, start: 0.000000, bitrate: 265 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 640x360 [SAR 1:1 DAR 16:9], 257 kb/s, 50 fps, 50 tbr, 12800 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc60.3.100 libx264
+Please use -q:a or -q:v, -qscale is ambiguous
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> mjpeg (native))
+Press [q] to stop, [?] for help
+Output #0, image2, to './demo/input_frames/dgs_345_front/%06d.jpg':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.7.100
+  Stream #0:0(und): Video: mjpeg, yuv420p(pc, progressive), 640x360 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 30 fps, 30 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 mjpeg
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: N/A
+[out#0/image2 @ 0000022a95c44740] video:1372KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame=   74 fps=0.0 q=0.0 Lsize=N/A time=00:00:02.46 bitrate=N/A speed=19.3x
+09-05 16:08:12 Using 1 GPU.
+09-05 16:08:12 Inference [dgs_345_front] with [./pretrained_models\smplest_x_h\smplest_x_h.pth.tar].
+09-05 16:08:12 Load checkpoint from ./pretrained_models\smplest_x_h\smplest_x_h.pth.tar
+09-05 16:08:12 Creating graph...
+Total #parameters: 687223152 (0.69B)
+09-05 16:08:26 WRN: Attention: Strict=False is set for checkpoint loading. Please check manually.
+  0%|                                                                                                                                                                                       | 0/74 [00:00<?, ?it/s]D:\KMUTT-Master's Degree\Research\Text2Sign\Code\SMPLest-X Main\utils\transforms.py:234: UserWarning: Using torch.cross without specifying the dim arg is deprecated.
+Please either pass the dim explicitly or simply use torch.linalg.cross.
+The default value of dim will change to agree with that of linalg.cross in a future release. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\native\Cross.cpp:66.)
+  b3 = torch.cross(b1, b2)
+
+==================================================
+MODEL OUTPUT PARAMETERS FOR FRAME 1
+==================================================
+dict_keys(['img', 'smplx_joint_proj', 'smplx_mesh_cam', 'smplx_root_pose', 'smplx_body_pose', 'smplx_lhand_pose', 'smplx_rhand_pose', 'smplx_jaw_pose', 'smplx_shape', 'smplx_expr', 'cam_trans', 'smplx_joint_cam'])
+
+--- Parameter: 'img' ---
+  Shape: torch.Size([1, 3, 512, 384])
+  Value (first 5 elements if large):
+[          0           0           0   0.0014706   0.0039216]
+
+--- Parameter: 'smplx_joint_proj' ---
+  Shape: torch.Size([1, 137, 2])
+  Value (first 5 elements if large):
+[     6.1765      12.542      7.0641      13.924      5.2383]
+
+--- Parameter: 'smplx_mesh_cam' ---
+  Shape: torch.Size([1, 10475, 3])
+  Value (first 5 elements if large):
+[   0.066526    -0.30159      20.691    0.070627    -0.30047]
+
+--- Parameter: 'smplx_root_pose' ---
+  Shape: torch.Size([1, 3])
+  Value (first 5 elements if large):
+[      3.112    -0.01621   0.0096334]
+
+--- Parameter: 'smplx_body_pose' ---
+  Shape: torch.Size([1, 63])
+  Value (first 5 elements if large):
+[   -0.18266  -0.0082885    0.088012     -0.2008   -0.010405]
+
+--- Parameter: 'smplx_lhand_pose' ---
+  Shape: torch.Size([1, 45])
+  Value (first 5 elements if large):
+[  0.0076559     0.49444    -0.26533    0.086496    0.006242]
+
+--- Parameter: 'smplx_rhand_pose' ---
+  Shape: torch.Size([1, 45])
+  Value (first 5 elements if large):
+[  0.0032845    -0.42094     0.27484    0.095503   -0.012887]
+
+--- Parameter: 'smplx_jaw_pose' ---
+  Shape: torch.Size([1, 3])
+  Value (first 5 elements if large):
+[  0.0065864   0.0011968  -0.0033886]
+
+--- Parameter: 'smplx_shape' ---
+  Shape: torch.Size([1, 10])
+  Value (first 5 elements if large):
+[  -0.062871    0.058772    -0.12649    0.043998     0.17237]
+
+--- Parameter: 'smplx_expr' ---
+  Shape: torch.Size([1, 10])
+  Value (first 5 elements if large):
+[    0.23332     0.25447     -1.3008     0.24304      0.4195]
+
+--- Parameter: 'cam_trans' ---
+  Shape: torch.Size([1, 3])
+  Value (first 5 elements if large):
+[  0.0085958     0.65082      20.792]
+
+--- Parameter: 'smplx_joint_cam' ---
+  Shape: torch.Size([1, 137, 3])
+  Value (first 5 elements if large):
+[          0           0           0    0.059171     0.09244]
+==================================================
+
+[ WARN:0@24.581] global loadsave.cpp:1329 cv::imencode Unsupported depth image for selected encoder is fallbacked to CV_8U.
+Stopping after one frame as requested.
+  0%|                                                                                                                                                                                       | 0/74 [00:04<?, ?it/s] 
+ffmpeg version 7.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2025 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, image2, from './demo/output_frames/dgs_345_front/%06d.jpg':
+  Duration: 00:00:00.03, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: mjpeg (Baseline), yuvj420p(pc, bt470bg/unknown/unknown), 640x360 [SAR 1:1 DAR 16:9], 30 fps, 30 tbr, 30 tbn
+Please use -q:a or -q:v, -qscale is ambiguous
+Stream mapping:
+  Stream #0:0 -> #0:0 (mjpeg (native) -> mjpeg (native))
+Press [q] to stop, [?] for help
+[swscaler @ 00000219cf6fdfc0] deprecated pixel format used, make sure you did set range correctly
+Output #0, mp4, to './demo/result_dgs_345_front.mp4':
+  Metadata:
+    encoder         : Lavf61.7.100
+  Stream #0:0: Video: mjpeg (mp4v / 0x7634706D), yuv420p(pc, bt470bg/unknown/unknown, progressive), 640x360 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 30 fps, 15360 tbn
+      Metadata:
+        encoder         : Lavc61.19.101 mjpeg
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: N/A
+[out#0/mp4 @ 00000219cf614500] video:29KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 2.785850%
+frame=    1 fps=0.0 q=0.0 Lsize=      30KiB time=00:00:00.03 bitrate=7385.1kbits/s speed=1.94x
