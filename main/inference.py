@@ -1,4 +1,7 @@
+import sys
 import os
+os.environ['PYOPENGL_PLATFORM'] = 'win32'
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import os.path as osp
 import argparse
 import numpy as np
@@ -147,7 +150,7 @@ def main():
             vis_img = cv2.rectangle(vis_img, (int(yolo_bbox[bbox_id][0]), int(yolo_bbox[bbox_id][1])), 
                                     (int(yolo_bbox[bbox_id][2]), int(yolo_bbox[bbox_id][3])), (0, 255, 0), 1)
             # draw mesh
-            vis_img = render_mesh(vis_img, mesh, smpl_x.face, {'focal': focal, 'princpt': princpt}, mesh_as_vertices=False)
+            vis_img = render_mesh(vis_img, mesh, smpl_x.face, {'focal': focal, 'princpt': princpt}, mesh_as_vertices=True)
 
         # save rendered image
         frame_name = os.path.basename(img_path)
