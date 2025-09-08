@@ -51,5 +51,5 @@ case "$EXT" in
 esac
 
 rm -rf ./demo/input_frames
-rm -rf ./demo/output_frames
+# rm -rf ./demo/output_frames
 
