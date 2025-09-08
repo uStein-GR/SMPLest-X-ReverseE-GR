@@ -8,9 +8,12 @@ EXT="${FILE_NAME##*.}"
 
 IMG_PATH=./demo/input_frames/$NAME
 OUTPUT_PATH=./demo/output_frames/$NAME
+OUTPUT_VIDEO_DIR=./output_img2vdo
+OUTPUT_VIDEO_PATH=./output_img2vdo/$NAME.mp4
 
 mkdir -p $IMG_PATH
 mkdir -p $OUTPUT_PATH
+mkdir -p $OUTPUT_VIDEO_DIR
 
 # convert video to frames
 case "$EXT" in
@@ -36,20 +39,25 @@ python main/inference.py \
     --ckpt_name $CKPT_NAME \
     --end $END_COUNT \
 
+python post_process/image2video.py \
+    --image_folder "${OUTPUT_PATH}" \
+    --output_video "${OUTPUT_VIDEO_PATH}" \
+    --fps "${FPS}"
+
 
 # convert frames to video
-case "$EXT" in
-    mp4|avi|mov|mkv|flv|wmv|webm|mpeg|mpg)
-        ffmpeg -y -f image2 -r ${FPS} -i ${OUTPUT_PATH}/%06d.jpg -vcodec mjpeg -qscale 0 -pix_fmt yuv420p ./demo/result_${NAME}.mp4
-        ;;
-    jpg|jpeg|png|bmp|gif|tiff|tif|webp|svg)
-        cp $OUTPUT_PATH/000001.$EXT ./demo/result_$FILE_NAME
-        ;;
-    *)
-        exit 1
-        ;;
-esac
+# case "$EXT" in
+#     mp4|avi|mov|mkv|flv|wmv|webm|mpeg|mpg)
+#         ffmpeg -y -f image2 -r ${FPS} -i ${OUTPUT_PATH}/%06d.jpg -vcodec mjpeg -qscale 0 -pix_fmt yuv420p ./demo/result_${NAME}.mp4
+#         ;;
+#     jpg|jpeg|png|bmp|gif|tiff|tif|webp|svg)
+#         cp $OUTPUT_PATH/000001.$EXT ./demo/result_$FILE_NAME
+#         ;;
+#     *)
+#         exit 1
+#         ;;
+# esac
 
 rm -rf ./demo/input_frames
-# rm -rf ./demo/output_frames
+rm -rf ./demo/output_frames
 
