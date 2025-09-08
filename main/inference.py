@@ -80,11 +80,14 @@ def main():
         
         # prepare input image
         img_path =osp.join(img_folder, f'{int(frame):06d}.jpg')
-
+ 
         transform = transforms.ToTensor()
         original_img = load_img(img_path)
-        vis_img = original_img.copy()
+        # vis_img = original_img.copy() # EDITED: For removed original image copy
         original_img_height, original_img_width = original_img.shape[:2]
+        
+        # EDITED: Create a black background instead of copying the original image +++
+        vis_img = np.zeros_like(original_img)
         
         # detection, xyxy
         yolo_bbox = detector.predict(original_img, 
@@ -146,10 +149,11 @@ def main():
             princpt = [cfg.model.princpt[0] / cfg.model.input_body_shape[1] * bbox[2] + bbox[0], 
                        cfg.model.princpt[1] / cfg.model.input_body_shape[0] * bbox[3] + bbox[1]]
             
-            # draw the bbox on img
-            vis_img = cv2.rectangle(vis_img, (int(yolo_bbox[bbox_id][0]), int(yolo_bbox[bbox_id][1])), 
-                                    (int(yolo_bbox[bbox_id][2]), int(yolo_bbox[bbox_id][3])), (0, 255, 0), 1)
-            # draw mesh
+            # EDITED: The drawing of the bounding box has been removed. ---
+            # vis_img = cv2.rectangle(vis_img, (int(yolo_bbox[bbox_id][0]), int(yolo_bbox[bbox_id][1])), 
+            #                         (int(yolo_bbox[bbox_id][2]), int(yolo_bbox[bbox_id][3])), (0, 255, 0), 1)
+
+            # draw mesh (now on the black background)
             vis_img = render_mesh(vis_img, mesh, smpl_x.face, {'focal': focal, 'princpt': princpt}, mesh_as_vertices=True)
 
         # save rendered image
@@ -159,3 +163,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
